@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="奥田 真佐子（Okuda Masako）のポートフォリオサイト。AIと自動化ツール（n8n, Dify, Make）を駆使した業務効率化エンジニアとしての実績とスキルを紹介します。">
+<title>奥田 真佐子 | AI × 業務効率化エンジニア</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F7F4EE;
+    --warm-white: #FDFBF8;
+    --charcoal: #2C2A26;
+    --mid: #6B6860;
+    --accent: #8B6F4E;
+    --accent-light: #C4A882;
+    --accent-pale: #EDE4D8;
+    --line: rgba(44,42,38,0.12);
+    --teal: #3D7A6E;
+    --teal-pale: #E2EEEC;
+    --fs: 1;
+  }
+  /* 文字サイズスケール */
+  html { font-size: calc(16px * var(--fs)); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--warm-white);
+    color: var(--charcoal);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(253,251,248,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; letter-spacing: 0.05em;
+    color: var(--charcoal); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem; letter-spacing: 0.15em;
+    color: var(--mid); text-decoration: none;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--charcoal); }
+  /* 文字サイズ切り替えボタン */
+  .font-size-btns {
+    display: flex; align-items: center; gap: 4px; margin-left: 1.5rem;
+  }
+  .font-size-btns button {
+    background: none; border: 1px solid var(--line);
+    color: var(--mid); cursor: pointer;
+    border-radius: 4px; padding: 2px 8px;
+    transition: all 0.15s; font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.6;
+  }
+  .font-size-btns button:hover { border-color: var(--accent); color: var(--accent); }
+  .font-size-btns button.active {
+    background: var(--accent); border-color: var(--accent);
+    color: #fff; font-weight: 500;
+  }
+  .btn-s { font-size: 11px; }
+  .btn-m { font-size: 13px; }
+  .btn-l { font-size: 15px; }
+  .hero {
+    min-height: 100vh; display: grid;
+    grid-template-columns: 1fr 1fr; padding-top: 5rem;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 4rem 3rem 4rem 5rem; position: relative;
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 1.1; margin-bottom: 0.3rem; font-weight: 400;
+  }
+  .hero-name-ja {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1rem; color: var(--mid); font-weight: 300;
+    letter-spacing: 0.2em; margin-bottom: 2.5rem;
+  }
+  .hero-tagline {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    line-height: 1.6; color: var(--charcoal);
+    margin-bottom: 1.5rem; font-weight: 300;
+  }
+  .hero-sub {
+    font-size: 0.88rem; color: var(--mid);
+    line-height: 1.9; margin-bottom: 3rem; max-width: 380px;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 0.8rem;
+    background: var(--charcoal); color: var(--warm-white);
+    padding: 0.9rem 2rem; font-size: 0.8rem; letter-spacing: 0.12em;
+    text-decoration: none; text-transform: uppercase;
+    transition: background 0.25s; align-self: flex-start;
+  }
+  .hero-cta:hover { background: var(--accent); }
+  .hero-cta-arrow { font-size: 1rem; }
+  .hero-right { position: relative; overflow: hidden; background: var(--cream); }
+  .hero-right::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--accent-pale) 0%, var(--cream) 60%);
+    z-index: 0;
+  }
+  .hero-visual {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 1; padding: 3rem;
+  }
+  .hero-card-float {
+    background: var(--warm-white); border: 1px solid var(--line);
+    padding: 2.5rem; width: 100%; max-width: 360px; position: relative;
+  }
+  .hero-card-float::before {
+    content: ''; position: absolute;
+    top: -8px; left: -8px; right: 8px; bottom: 8px;
+    border: 1px solid var(--accent-light); z-index: -1;
+  }
+  .card-label {
+    font-size: 0.68rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem;
+  }
+  .flow-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 0.8rem 0; border-bottom: 1px solid var(--line);
+  }
+  .flow-item:last-child { border-bottom: none; }
+  .flow-icon {
+    width: 32px; height: 32px; background: var(--accent-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; flex-shrink: 0;
+    color: var(--accent); font-weight: 500;
+  }
+  .flow-text { font-size: 0.82rem; line-height: 1.5; }
+  .flow-title { font-weight: 500; color: var(--charcoal); }
+  .flow-desc { color: var(--mid); font-size: 0.75rem; }
+  .flow-badge {
+    display: inline-block; background: var(--teal-pale);
+    color: var(--teal); font-size: 0.6rem;
+    padding: 2px 8px; letter-spacing: 0.1em; margin-top: 4px;
+  }
+  section { padding: 7rem 5rem; }
+  .section-label {
+    font-size: 0.68rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 300; line-height: 1.5; margin-bottom: 1rem;
+  }
+  .section-sub {
+    font-size: 0.88rem; color: var(--mid);
+    line-height: 1.9; max-width: 520px;
+  }
+  .divider {
+    width: 40px; height: 1px;
+    background: var(--accent-light); margin: 1.5rem 0;
+  }
+  .before-after { background: var(--cream); }
+  .ba-grid {
+    display: grid; grid-template-columns: 1fr 60px 1fr;
+    gap: 0; margin-top: 3rem; align-items: stretch;
+  }
+  .ba-col { padding: 2.5rem; border: 1px solid var(--line); background: var(--warm-white); }
+  .ba-col.after { background: var(--charcoal); color: var(--warm-white); }
+  .ba-head {
+    font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase; margin-bottom: 1.5rem; color: var(--mid);
+  }
+  .ba-col.after .ba-head { color: var(--accent-light); }
+  .ba-item {
+    font-size: 0.85rem; padding: 0.7rem 0;
+    border-bottom: 1px solid var(--line);
+    display: flex; gap: 0.7rem; align-items: flex-start;
+  }
+  .ba-col.after .ba-item { border-bottom-color: rgba(255,255,255,0.1); }
+  .ba-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--line); margin-top: 0.55rem; flex-shrink: 0;
+  }
+  .ba-col.after .ba-dot { background: var(--accent-light); }
+  .ba-strong { font-weight: 500; color: var(--accent-light); }
+  .ba-arrow {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; color: var(--accent-light);
+  }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .service-card {
+    border: 1px solid var(--line); padding: 2rem;
+    position: relative; transition: border-color 0.2s;
+  }
+  .service-card:hover { border-color: var(--accent-light); }
+  .service-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; color: var(--accent-pale);
+    line-height: 1; margin-bottom: 1rem;
+  }
+  .service-title {
+    font-weight: 500; font-size: 0.95rem;
+    margin-bottom: 0.5rem; letter-spacing: 0.05em;
+  }
+  .service-desc { font-size: 0.82rem; color: var(--mid); line-height: 1.8; }
+  .service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
+  .tag {
+    font-size: 0.65rem; padding: 3px 10px;
+    border: 1px solid var(--line); color: var(--mid); letter-spacing: 0.08em;
+  }
+  /* ── VIDEO GALLERY ── */
+  #works { background: var(--cream); }
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+    gap: 3rem; margin-top: 3rem;
+  }
+  .video-item {
+    background: var(--warm-white);
+    border: 1px solid var(--line);
+  }
+  .video-thumb {
+    display: block; aspect-ratio: 16/9;
+    background: var(--charcoal); overflow: hidden;
+    position: relative;
+  }
+  .video-thumb video {
+    width: 100%; height: 100%; object-fit: contain; display: block;
+  }
+  .video-item > *:not(.video-thumb) { padding: 0 2rem; }
+  .video-item > .video-meta { padding-top: 1.5rem; }
+  .video-item > .design-note { padding-bottom: 2rem; }
+  .video-meta {
+    display: flex; align-items: center; gap: 0.5rem;
+    flex-wrap: wrap; margin-bottom: 0.8rem;
+  }
+  .tag--tool {
+    background: var(--accent-pale);
+    border-color: var(--accent-light); color: var(--accent);
+  }
+  .label {
+    margin-left: auto; font-size: 0.72rem;
+    color: var(--mid); letter-spacing: 0.1em;
+  }
+  .video-item h3 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.05rem; font-weight: 400;
+    line-height: 1.5; margin-bottom: 0.5rem;
+  }
+  .stack {
+    font-size: 0.75rem; color: var(--mid);
+    letter-spacing: 0.05em; margin-bottom: 1rem;
+  }
+  .caption {
+    font-size: 0.78rem; color: var(--mid);
+    line-height: 1.7; margin-bottom: 1.2rem;
+    padding: 0.8rem 1rem;
+    background: var(--cream); border-left: 2px solid var(--accent-light);
+  }
+  .psr { margin-bottom: 1.2rem; }
+  .psr > div {
+    display: grid; grid-template-columns: 80px 1fr;
+    gap: 0.3rem 1rem; padding: 0.7rem 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+  .psr > div:last-child { border-bottom: none; }
+  .psr dt {
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); padding-top: 0.15rem;
+  }
+  .psr dd { font-size: 0.82rem; color: var(--mid); line-height: 1.7; }
+  .design-note {
+    font-size: 0.8rem; color: var(--mid); line-height: 1.8;
+    padding-top: 1rem; padding-bottom: 2rem;
+    border-top: 1px solid var(--line);
+  }
+  .design-note strong { color: var(--charcoal); font-weight: 500; }
+  /* ── ARCHITECTURE ── */
+  .arch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+    gap: 3rem; margin-top: 3rem;
+  }
+  .arch-item { background: var(--warm-white); border: 1px solid var(--line); }
+  .arch-img { aspect-ratio: 16/9; overflow: hidden; background: var(--cream); display: flex; align-items: center; justify-content: center; }
+  .arch-img img { width: 100%; height: 100%; object-fit: contain; display: block; background: var(--cream); }
+  .arch-item > *:not(.arch-img) { padding: 0 2rem; }
+  .arch-item > .video-meta { padding-top: 1.5rem; }
+  .arch-item > .design-note { padding-bottom: 2rem; }
+  /* ── ABOUT ── */
+  .about { background: var(--warm-white); }
+  .about-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center;
+  }
+  .about-photo-frame { position: relative; }
+  .about-photo-frame::after {
+    content: ''; position: absolute;
+    bottom: -12px; right: -12px; width: 80%; height: 80%;
+    border: 1px solid var(--accent-light); z-index: 0;
+  }
+  .about-photo {
+    width: 100%; aspect-ratio: 3/4;
+    background: var(--accent-pale);
+    position: relative; z-index: 1; overflow: hidden;
+  }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .about-text .section-sub { max-width: 100%; }
+  .about-list { list-style: none; margin-top: 1.5rem; }
+  .about-list li {
+    font-size: 0.85rem; padding: 0.6rem 0;
+    border-bottom: 1px solid var(--line);
+    display: flex; gap: 1rem; color: var(--mid);
+  }
+  .about-list li::before { content: '—'; color: var(--accent-light); flex-shrink: 0; }
+  /* ── CONTACT ── */
+  .contact { background: var(--charcoal); color: var(--warm-white); text-align: center; }
+  .contact .section-title { color: var(--warm-white); }
+  .contact .section-sub { color: rgba(253,251,248,0.6); margin: 0 auto; }
+  .contact .divider { background: var(--accent-light); margin: 1.5rem auto; }
+  .contact-name {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.1rem; font-weight: 300;
+    letter-spacing: 0.2em; margin-top: 3rem;
+  }
+  .contact-name-en {
+    font-size: 0.78rem; color: rgba(253,251,248,0.5);
+    letter-spacing: 0.15em; margin-bottom: 0.8rem;
+  }
+  .contact-email {
+    display: inline-flex; align-items: center; gap: 1rem;
+    margin-top: 1rem; padding: 1rem 2.5rem;
+    border: 1px solid rgba(253,251,248,0.2);
+    color: var(--warm-white); font-size: 0.85rem;
+    letter-spacing: 0.08em; text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-email:hover {
+    border-color: var(--accent-light);
+    background: rgba(196,168,130,0.1);
+  }
+  footer {
+    padding: 2rem 5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--line);
+    font-size: 0.72rem; color: var(--mid);
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left > * { opacity: 0; animation: fadeUp 0.7s ease forwards; }
+  .hero-eyebrow  { animation-delay: 0.1s; }
+  .hero-name     { animation-delay: 0.2s; }
+  .hero-name-ja  { animation-delay: 0.3s; }
+  .hero-tagline  { animation-delay: 0.4s; }
+  .hero-sub      { animation-delay: 0.5s; }
+  .hero-cta      { animation-delay: 0.6s; }
+  .hero-card-float { opacity: 0; animation: fadeUp 0.9s ease 0.5s forwards; }
+  /* タブレット */
+  @media (max-width: 1024px) {
+    .video-grid { grid-template-columns: 1fr; }
+    .arch-grid  { grid-template-columns: 1fr; }
+  }
+  /* スマホ・小画面 */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1rem; }
+    .nav-links { display: none; }
+    .font-size-btns { margin-left: 0; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 5rem 1.2rem 2rem; }
+    .hero-right { min-height: 40vh; }
+    section { padding: 3rem 1.2rem; }
+    .ba-grid { grid-template-columns: 1fr; }
+    .ba-arrow { transform: rotate(90deg); }
+    .services-grid { grid-template-columns: 1fr; }
+    .video-grid { grid-template-columns: 1fr; }
+    .arch-grid  { grid-template-columns: 1fr; }
+    .about-inner { grid-template-columns: 1fr; gap: 2rem; }
+    footer { padding: 1.5rem 1.2rem; flex-direction: column; gap: 0.5rem; }
+    .psr > div { grid-template-columns: 70px 1fr; }
+    .hero-card-float { padding: 1.5rem; }
+  }
+  /* 極小スマホ */
+  @media (max-width: 480px) {
+    .hero-name { font-size: 2.4rem; }
+    .hero-tagline { font-size: 1.2rem; }
+    .video-item > *:not(.video-thumb) { padding: 0 1rem; }
+    .video-item > .video-meta { padding-top: 1rem; }
+    .video-item > .design-note { padding-bottom: 1.2rem; }
+  }
+
+  /* ── トップへ戻るボタン ── */
+  .back-to-top {
+    position: fixed; bottom: 30px; right: 30px;
+    width: 50px; height: 50px; border-radius: 50%;
+    background: var(--charcoal); color: var(--warm-white);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; opacity: 0; visibility: hidden;
+    transition: all 0.3s; z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .back-to-top.visible { opacity: 1; visibility: visible; }
+  .back-to-top:hover { background: var(--accent); transform: translateY(-4px); }
+
+  /* ── 画像モーダル ── */
+  .zoomable {
+    cursor: zoom-in;
+    transition: opacity 0.2s;
+  }
+  .zoomable:hover { opacity: 0.85; }
+  .img-modal-overlay {
+    position: fixed; inset: 0; z-index: 2000;
+    background: rgba(20,18,15,0.92);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.25s, visibility 0.25s;
+    padding: 2rem;
+  }
+  .img-modal-overlay.active { opacity: 1; visibility: visible; }
+  .img-modal-overlay img {
+    max-width: 92vw; max-height: 88vh;
+    object-fit: contain;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.6);
+    transform: scale(0.94);
+    transition: transform 0.25s;
+  }
+  .img-modal-overlay.active img { transform: scale(1); }
+  .img-modal-close {
+    position: fixed; top: 1.2rem; right: 1.5rem;
+    width: 44px; height: 44px;
+    background: rgba(253,251,248,0.12);
+    border: 1px solid rgba(253,251,248,0.25);
+    color: var(--warm-white); font-size: 1.3rem;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+    line-height: 1;
+  }
+  .img-modal-close:hover { background: var(--accent); }
+  .img-modal-hint {
+    position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+    font-size: 0.72rem; letter-spacing: 0.12em;
+    color: rgba(253,251,248,0.4); pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- 
+  【ナビゲーションセクション】
+  画面上部に固定されるメニューです。
+  ロゴ、各セクションへのリンク、文字サイズ変更ボタンが含まれます。
+-->
+<nav>
+  <a href="#" class="nav-logo">Masako Okuda</a>
+  <ul class="nav-links">
+    <li><a href="#works">Works</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="font-size-btns">
+    <button class="btn-s active" onclick="setFontSize('s',this)">小</button>
+    <button class="btn-m" onclick="setFontSize('m',this)">中</button>
+    <button class="btn-l" onclick="setFontSize('l',this)">大</button>
+  </div>
+</nav>
+
+<!-- 
+  【ヒーローセクション】
+  サイトを開いて最初に目に入る重要なエリアです。
+  キャッチコピー、名前、自動化のイメージ図を表示します。
+-->
+<section class="hero" style="padding: 0;">
+  <div class="hero-left">
+    <p class="hero-eyebrow">AI × 業務効率化エンジニア</p>
+    <h1 class="hero-name">Masako<br>Okuda</h1>
+    <p class="hero-name-ja">奥田 真佐子</p>
+    <p class="hero-tagline">頑張らなくても回る仕組み、<br>つくります。</p>
+    <p class="hero-sub">曖昧な課題を論理的に構造化し、<br>n8n・Dify・Make を駆使して実務レベルで自動化。<br>個人事業主・小規模チームの「本来の仕事」に集中できる状態をつくります。</p>
+    <a href="mailto:okudamasako0209@gmail.com" class="hero-cta">ご相談・お問い合わせ <span class="hero-cta-arrow">→</span></a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-visual">
+      <div class="hero-card-float">
+        <p class="card-label">自動化の仕組み — イメージ</p>
+        <div class="flow-item">
+          <div class="flow-icon">01</div>
+          <div class="flow-text">
+            <p class="flow-title">問い合わせ受信</p>
+            <p class="flow-desc">メール・フォームから自動取得</p>
+          </div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-icon">02</div>
+          <div class="flow-text">
+            <p class="flow-title">AI が分類・回答生成</p>
+            <p class="flow-desc">内容を判断し、最適な返答を作成</p>
+            <span class="flow-badge">自動化</span>
+          </div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-icon">03</div>
+          <div class="flow-text">
+            <p class="flow-title">人間が確認・承認</p>
+            <p class="flow-desc">Human-in-the-loop で安全に運用</p>
+          </div>
+        </div>
+        <div class="flow-item">
+          <div class="flow-icon">04</div>
+          <div class="flow-text">
+            <p class="flow-title">Slack / Notion へ通知</p>
+            <p class="flow-desc">音声→議事録→SNS 投稿まで完結</p>
+            <span class="flow-badge">ワンクリック</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 
+  【Before/Afterセクション】
+  サービス導入によってどのように業務が改善されるかを対比して示します。
+-->
+<section class="before-after" id="services">
+  <p class="section-label">Before / After</p>
+  <h2 class="section-title">仕組み導入で、ここまで変わる</h2>
+  <div class="divider"></div>
+  <div class="ba-grid">
+    <div class="ba-col">
+      <p class="ba-head">Before — 導入前</p>
+      <div class="ba-item"><span class="ba-dot"></span><span>問い合わせ対応に毎日 2 時間</span></div>
+      <div class="ba-item"><span class="ba-dot"></span><span>議事録作成を毎回 30 分以上</span></div>
+      <div class="ba-item"><span class="ba-dot"></span><span>SNS 投稿が続かない</span></div>
+      <div class="ba-item"><span class="ba-dot"></span><span>業務フローが属人化している</span></div>
+    </div>
+    <div class="ba-arrow">→</div>
+    <div class="ba-col after">
+      <p class="ba-head">After — 導入後</p>
+      <div class="ba-item"><span class="ba-dot"></span><span>問い合わせ対応 → <span class="ba-strong">自動化</span></span></div>
+      <div class="ba-item"><span class="ba-dot"></span><span>議事録 → <span class="ba-strong">ワンクリック生成</span></span></div>
+      <div class="ba-item"><span class="ba-dot"></span><span>SNS → <span class="ba-strong">半自動で継続</span></span></div>
+      <div class="ba-item"><span class="ba-dot"></span><span>業務フロー → <span class="ba-strong">整理・最適化</span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section style="background: var(--warm-white);">
+  <p class="section-label">Services</p>
+  <h2 class="section-title">対応できること</h2>
+  <div class="divider"></div>
+  <p class="section-sub">それぞれの業務課題に合わせて、最適なAI活用の仕組みをご提案します。</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <p class="service-num">01</p>
+      <p class="service-title">問い合わせ対応の自動化</p>
+      <p class="service-desc">AIが内容を判断し、自動で回答・振り分けを行います。対応時間を大幅に削減し、重要な業務に集中できる環境を構築します。</p>
+      <div class="service-tags"><span class="tag">Dify</span><span class="tag">Slack</span><span class="tag">Notion</span></div>
+    </div>
+    <div class="service-card">
+      <p class="service-num">02</p>
+      <p class="service-title">議事録の自動生成</p>
+      <p class="service-desc">音声から文字起こし、要約まで自動化。会議後すぐに整理された議事録が手元に届きます。記録業務をほぼゼロにします。</p>
+      <div class="service-tags"><span class="tag">音声→文字起こし</span><span class="tag">要約</span><span class="tag">自動配信</span></div>
+    </div>
+    <div class="service-card">
+      <p class="service-num">03</p>
+      <p class="service-title">SNS 投稿の半自動化</p>
+      <p class="service-desc">継続的な発信の負担を軽減。コンテンツのアイデア出しから下書き作成まで、AIがサポートして投稿習慣を維持します。</p>
+      <div class="service-tags"><span class="tag">Threads</span><span class="tag">Instagram</span><span class="tag">X</span></div>
+    </div>
+    <div class="service-card">
+      <p class="service-num">04</p>
+      <p class="service-title">業務フローの整理・最適化</p>
+      <p class="service-desc">現状の業務を整理し、AI活用できる箇所を特定。無駄を省き、チーム全体が動きやすい仕組みを設計します。</p>
+      <div class="service-tags"><span class="tag">業務分析</span><span class="tag">フロー設計</span><span class="tag">ツール選定</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 
+  【ビデオギャラリーセクション】
+  実際の開発プロダクトや自動化ツールの動作デモ動画を紹介するメインエリアです。
+-->
+<section id="works">
+  <p class="section-label">Video Gallery</p>
+  <h2 class="section-title">動作デモ・開発プロダクト</h2>
+  <div class="divider"></div>
+  <p class="section-sub">実際の動作イメージをご覧いただけます。自動化やAIアシスタントの挙動を動画でご確認ください。</p>
+  <div class="video-grid">
+
+    <!-- Video 01 -->
+    <article class="video-item">
+      <div class="video-thumb">
+        <video src="videos/n8n.mp4" controls playsinline preload="metadata" style="width:100%;height:100%;display:block;object-fit:cover;"></video>
+      </div>
+      <div class="video-meta">
+        <span class="tag">Human-in-the-loop</span>
+        <span class="tag tag--tool">n8n</span>
+        <span class="label">— Video 01</span>
+      </div>
+      <h3>「Human-in-the-loop」型 メール自動トリアージ ＆ 返信下書きシステム</h3>
+      <p class="stack">n8n  /  Gmail API  /  LLM  /  Slack</p>
+      <p class="caption">▲ メール自動トリアージ デモ動画：メール受信から Slack 通知・返信下書き生成までの自動フローを実演しています。</p>
+      <dl class="psr">
+        <div><dt>Problem</dt><dd>自動送信の事故リスクと定型メール対応の工数過多。一件ずつ手動で返信しており、業務のボトルネックとなっていた。</dd></div>
+        <div><dt>Solution</dt><dd>LLM が感情・文脈・緊急度を分析して自動分類。人間が最終確認・承認（Gmail 下書き保存）する安全な UX を設計し、誤送信ゼロを担保。</dd></div>
+        <div><dt>Result</dt><dd>重要メールは Slack にリアルタイム通知。下書きをワンクリックで送信できる体制を構築し、対応工数を大幅削減。</dd></div>
+      </dl>
+      <p class="design-note"><strong>設計思想：</strong>完全自動化ではなく「Human-in-the-loop」を意図的に採用。AIの判断精度と人間の最終責任を両立させることで、ビジネスリスクなく導入できる実務レベルの設計を実現しました。</p>
+    </article>
+
+    <!-- Video 02 -->
+    <article class="video-item">
+      <div class="video-thumb">
+        <video src="videos/uranai.mp4" controls playsinline preload="metadata" style="width:100%;height:100%;display:block;object-fit:cover;"></video>
+      </div>
+      <div class="video-meta">
+        <span class="tag">Personalize AI</span>
+        <span class="tag tag--tool">Dify</span>
+        <span class="label">— Video 02</span>
+      </div>
+      <h3>パーソナライズ AI エージェント（高度な個別最適化のデモ実装）</h3>
+      <p class="stack">Dify  /  複数データソース統合  /  カスタムパラメータ設計</p>
+      <p class="caption">▲ 占いツールデモ動画：個人の特性データを起点に、出力を動的にパーソナライズする AI エージェントの実装例です。</p>
+      <dl class="psr">
+        <div><dt>Problem</dt><dd>ユーザーニーズの曖昧さ。一般的な回答では満足度が低く、個人の特性・状況に合わせた出力が求められていた。</dd></div>
+        <div><dt>Solution</dt><dd>複数データソース（属性・履歴・コンテキスト）を統合し、個人特性に応じて LLM の出力を動的に変化させるパーソナライズ設計を実装。</dd></div>
+        <div><dt>Result</dt><dd>占いツールというデモを通じて、「個人データ起点の AI パーソナライズ技術」を可視化。EC レコメンド・採用支援など多様な業務応用が可能な技術基盤を実証。</dd></div>
+      </dl>
+      <p class="design-note"><strong>位置づけ：</strong>占いは高度なパーソナライズ実装のデモとして位置づけています。個人の属性データを LLM に渡して出力を最適化する技術は、顧客対応・提案・コーチングなど幅広いビジネスシーンに転用できます。</p>
+    </article>
+
+    <!-- Video 03 -->
+    <article class="video-item">
+      <div class="video-thumb">
+        <video src="videos/ai-secretary.mp4" controls playsinline preload="metadata" style="width:100%;height:100%;display:block;object-fit:cover;"></video>
+      </div>
+      <div class="video-meta">
+        <span class="tag">AI Secretary</span>
+        <span class="tag tag--tool">Dashboard</span>
+        <span class="label">— Video 03</span>
+      </div>
+      <h3>統合型「AI秘書」ダッシュボード：全体概要</h3>
+      <p class="stack">LLM API  /  Calendar API  /  独自UI</p>
+      <p class="caption">▲ AI秘書ダッシュボード全体デモ：文章校正・タスク管理・スケジュール調整を一元化した統合UIの操作感を実演しています。</p>
+      <dl class="psr">
+        <div><dt>Problem</dt><dd>文章校正・タスク管理・スケジュール調整など日常業務のサポートが複数ツールに分散。ツール間の行き来が発生し、作業効率を下げていた。</dd></div>
+        <div><dt>Solution</dt><dd>LLM API・Calendar API を組み合わせ、業務サポート機能を一画面に集約した統合ダッシュボードを独自設計。AI が文脈を理解しながら複数タスクを横断的に支援する UX を実装。</dd></div>
+        <div><dt>Result</dt><dd>ツールの行き来をなくし、一画面で業務をサポートする「AI秘書」として機能。日々の定型業務にかかる時間を圧縮し、本質的な業務に集中できる環境を実現。</dd></div>
+      </dl>
+      <p class="design-note"><strong>設計思想：</strong>単機能ツールを並べるのではなく、文脈を共有しながら複数機能が連携する「統合体験」を重視。個別機能の詳細はVideo 04・05で確認できます。</p>
+    </article>
+
+    <!-- Video 04 -->
+    <article class="video-item">
+      <div class="video-thumb">
+        <video src="videos/ai-secretary-text.mp4" controls playsinline preload="metadata" style="width:100%;height:100%;display:block;object-fit:cover;"></video>
+      </div>
+      <div class="video-meta">
+        <span class="tag">AI Secretary</span>
+        <span class="tag tag--tool">UI</span>
+        <span class="label">— Video 04</span>
+      </div>
+      <h3>統合型「AI秘書」ダッシュボード：AI 文章校正機能</h3>
+      <p class="stack">LLM API  /  独自UI</p>
+      <p class="caption">▲ LLM API と連携し、ビジネスメール等の誤字・文法・文体を自動校正する独自 UI を実装。丁寧度レベルの調整や修正理由の可視化など、実務で使えるUXを追求しています。</p>
+      <dl class="psr">
+        <div><dt>Problem</dt><dd>メール文章の敬語・文体チェックに時間がかかり、送信前の確認が属人的に。丁寧すぎる・砕けすぎるといった文体のばらつきも課題だった。</dd></div>
+        <div><dt>Solution</dt><dd>LLM API を活用し、誤字・文法・文体を自動校正する独自 UI を実装。丁寧度レベルをスライダーで調整でき、修正箇所とその理由も可視化することで納得感のある校正体験を設計。</dd></div>
+        <div><dt>Result</dt><dd>文章確認にかかる時間を大幅短縮。丁寧度の調整機能により、送信先や状況に合わせた文体を一貫して保てる環境を実現。</dd></div>
+      </dl>
+      <p class="design-note"><strong>設計思想：</strong>「校正してくれた」だけでなく「なぜそう直したか」が見えることで、使い手が納得して使えるUXを重視。AI の判断を一方的に押しつけない透明性を設計の軸に置いています。</p>
+    </article>
+
+    <!-- Video 05 -->
+    <article class="video-item">
+      <div class="video-thumb">
+        <video src="videos/ai-secretary-task.mp4" controls playsinline preload="metadata" style="width:100%;height:100%;display:block;object-fit:cover;"></video>
+      </div>
+      <div class="video-meta">
+        <span class="tag">AI Secretary</span>
+        <span class="tag tag--tool">UI</span>
+        <span class="label">— Video 05</span>
+      </div>
+      <h3>統合型「AI秘書」ダッシュボード：タスク・スケジュール管理</h3>
+      <p class="stack">Calendar API  /  AI Suggestion</p>
+      <p class="caption">▲ カレンダー API と連携し、複数ツールの行き来をなくすシームレスな UI を構築。AI によるタスク優先度サジェスト機能も実装し、日々の業務効率化を支援します。</p>
+      <dl class="psr">
+        <div><dt>Problem</dt><dd>タスク管理・スケジュール確認・優先度判断がそれぞれ別ツールで分散。都度ツールを切り替える手間が集中力を削ぎ、タスクの抜け漏れや締め切り超過につながっていた。</dd></div>
+        <div><dt>Solution</dt><dd>Calendar API と連携し、タスク一覧・スケジュール・優先度サジェストを一画面に集約。AI が期限・重要度・文脈を考慮して優先順位を提案し、今日やるべきことをひと目で把握できる UI を設計。</dd></div>
+        <div><dt>Result</dt><dd>ツール切り替えの手間をゼロに。AI の優先度サジェストにより意思決定を補助し、タスクの見落としを防ぎながら日々の業務リズムを整える環境を実現。</dd></div>
+      </dl>
+      <p class="design-note"><strong>設計思想：</strong>「何をすべきか迷う時間」をなくすことを最優先に設計。AI がすべてを決めるのではなく、人間の判断を後押しする「提案型」の UX にこだわりました。</p>
+    </article>
+
+    <!-- Video 06 -->
+    <article class="video-item">
+      <div class="video-thumb">
+        <video src="videos/FAQ_BOT.mp4" controls playsinline preload="metadata" style="width:100%;height:100%;display:block;object-fit:cover;"></video>
+      </div>
+      <div class="video-meta">
+        <span class="tag">CS Automation</span>
+        <span class="tag tag--tool">Dify</span>
+        <span class="label">— Video 06</span>
+      </div>
+      <h3>CS 対応を自動化する「自己学習型」顧客対応 AI エージェント</h3>
+      <p class="stack">Dify  /  Notion  /  Slack</p>
+      <p class="caption">▲ FAQ Bot デモ動画：定型問い合わせへの自動応答から、Slack エスカレーション・Notion への回答蓄積による自己学習ループまでを一貫して実演しています。</p>
+      <dl class="psr">
+        <div><dt>Problem</dt><dd>「商品の返送」「送料」など定型問い合わせへの手動対応が積み重なり、CS 部門の工数を圧迫。AI が回答できない場合の顧客への案内・担当者への引き継ぎも属人的になっていた。</dd></div>
+        <div><dt>Solution</dt><dd>Dify × Notion × Slack を連携した実運用特化型ボットを構築。AI が対応困難と判断した場合は顧客へ自動案内しつつ Slack で即時エスカレーション。有人回答は Notion へ自動蓄積し、次回以降 AI が自力回答できる「自己学習ループ」を実装。</dd></div>
+        <div><dt>Result</dt><dd>定型 CS 対応の工数を大幅削減。エスカレーションと学習の仕組みにより AI の限界をカバーし、回答できる領域が運用とともに拡大し続ける持続可能な自動化基盤を実現。</dd></div>
+      </dl>
+      <p class="design-note"><strong>設計思想：</strong>「AI が全部やる」ではなく、AI と人間の役割を明確に分担。AI が苦手なケースはシームレスに有人対応へ橋渡しし、その知見を AI に還元することで、運用しながら賢くなるボットを目指しました。</p>
+    </article>
+
+    <!-- Video 07 -->
+    <article class="video-item">
+      <div class="video-thumb">
+        <video src="videos/WEBPAGE.mp4" controls playsinline preload="metadata" style="width:100%;height:100%;display:block;object-fit:cover;"></video>
+      </div>
+      <div class="video-meta">
+        <span class="tag">HP Auto Build</span>
+        <span class="tag tag--tool">Claude</span>
+        <span class="label">— Video 07</span>
+      </div>
+      <h3>AI によるホームページ自動生成システム</h3>
+      <p class="stack">Claude API  /  HTML/CSS/JS  /  プロンプトエンジニアリング</p>
+      <p class="caption">▲ ホームページ自動生成デモ：要件をテキストで入力するだけで、デザイン済みの HTML ページが自動生成されるまでの一連のフローを実演しています。</p>
+      <dl class="psr">
+        <div><dt>Problem</dt><dd>ホームページ制作には専門知識・時間・費用がかかり、個人事業主や小規模チームにとって大きなハードルだった。「何を伝えたいか」はあっても、それを形にする手段がなかった。</dd></div>
+        <div><dt>Solution</dt><dd>Claude API を活用し、事業内容・ターゲット・デザインイメージをテキストで入力するだけで、コーディング不要で HTML を自動生成するシステムを実装。要件定義から出力まで一気通貫で完結する設計を採用。</dd></div>
+        <div><dt>Result</dt><dd>専門知識ゼロでも数分でホームページのたたき台が完成。修正指示も自然言語で行えるため、デザイナー・エンジニアへの依頼コストを大幅削減し、スピーディな公開を実現。</dd></div>
+      </dl>
+      <p class="design-note"><strong>設計思想：</strong>「作れない」を「すぐ作れる」に変える体験設計を重視。完璧な完成品を目指すのではなく、まず動くものを出して対話しながら育てる「生成→修正→改善」のサイクルをシステムに組み込みました。ノーコードでありながら、プロ品質のアウトプットを目指したプロンプトエンジニアリングが核心です。</p>
+    </article>
+
+    <!-- Video 08 -->
+    <article class="video-item">
+      <div class="video-thumb">
+        <video src="videos/HelloWorld.mp4" controls playsinline preload="metadata" style="width:100%;height:100%;display:block;object-fit:cover;"></video>
+      </div>
+      <div class="video-meta">
+        <span class="tag">AI Video Gen</span>
+        <span class="tag tag--tool">Remotion</span>
+        <span class="label">— Video 08</span>
+      </div>
+      <h3>自然言語だけで動画を生成：Remotion × Claude Code</h3>
+      <p class="stack">Remotion  /  Claude Code  /  React  /  MCP</p>
+      <p class="caption">▲ 動画自動生成デモ：浜松市の天気データをもとに、Claude Code への自然言語指示だけでタイムライン型の天気動画を生成・MP4 書き出しするまでを実演しています。</p>
+      <dl class="psr">
+        <div><dt>Problem</dt><dd>動画制作には専用ソフト・編集スキル・長い作業時間が必要だった。「作りたいイメージはあるが、動画にできない」という壁がノンエンジニアにとって高すぎた。</dd></div>
+        <div><dt>Solution</dt><dd>Remotion（React ベースの動画フレームワーク）と Claude Code を MCP で連携。自然言語の指示だけで AI がコードを生成・修正し、MP4 として書き出すまでを完全自動化。</dd></div>
+        <div><dt>Result</dt><dd>動画編集ソフト不要・コーディング不要で、プロ品質の動画が数分で完成。「動画を作る」という作業が AI への指示に置き換わることを実証。天気・商品紹介・レポート動画など定型動画への応用が可能。</dd></div>
+      </dl>
+      <p class="design-note"><strong>技術的背景：</strong>Remotion は動画を React コンポーネントとして定義するフレームワーク。「動画＝コード」という構造により、Claude Code のコード生成能力がそのまま動画生成能力になります。MCP（Model Context Protocol）でドキュメントをリアルタイム参照しながら精度の高いコードを出力するこの仕組みは、2025〜2026年にかけて急速に普及しつつある最前線の技術スタックです。</p>
+    </article>
+
+    <!-- Video 09 -->
+    <article class="video-item">
+      <div class="video-thumb">
+        <video src="videos/2_A.mp4" controls playsinline preload="metadata" style="width:100%;height:100%;display:block;object-fit:cover;"></video>
+      </div>
+      <div class="video-meta">
+        <span class="tag">Slide Generator</span>
+        <span class="tag tag--tool">Gamma</span>
+        <span class="label">— Video 09</span>
+      </div>
+      <h3>Gamma 用スライド指示文ジェネレーター（品質・デザイン特化型）</h3>
+      <p class="stack">Claude API  /  Gamma  /  プロンプトエンジニアリング  /  Miro</p>
+      <p class="caption">▲ スライド指示文生成デモ：テーマ・ターゲット・目的を入力するだけで、Gamma にそのまま貼り付けられる構成済みのスライド指示文が自動出力されるまでを実演しています。</p>
+      <dl class="psr">
+        <div><dt>Problem</dt><dd>プレゼン資料の作成は「何をどの順番で伝えるか」という構成設計が最も時間のかかる工程。Gamma などの AI スライドツールを使っていても、質の高い指示文を書けないと出力がブレ、結局手直しに時間がかかっていた。</dd></div>
+        <div><dt>Solution</dt><dd>Claude API を活用し、伝えたい要点を箇条書きで入力するだけで Gamma 用の最適な構成・指示文を自動生成するツールを実装。「人間が考える → AI が構成 → Gamma がデザイン」という半自動フロー（提案 A）を一気通貫で体験できる設計。</dd></div>
+        <div><dt>Result</dt><dd>スライド構成に費やす時間を大幅削減。Gamma への貼り付けだけでデザイン済み資料のベースが即完成し、最終調整（画像差し替え・細かいレイアウト修正）のみに集中できる実務直結のワークフローを実現。</dd></div>
+      </dl>
+      <p class="design-note"><strong>設計思想：</strong>「完全自動化」ではなく、人間の思考と AI の生成能力を最適に組み合わせる「半自動フロー（提案 A）」を意図的に採用。AI に任せる部分（構成・文章）と人間が担う部分（最終判断・ブランド調整）を明確に分離することで、品質とスピードを両立した実務レベルの資料制作を実現しています。フロー設計は Miro でアーキテクチャ図として可視化・クライアントと共有済み。</p>
+    </article>
+
+    <!-- Video 10 -->
+    <article class="video-item">
+      <div class="video-thumb">
+        <video src="videos/2_4.mp4" controls playsinline preload="metadata" style="width:100%;height:100%;display:block;object-fit:cover;"></video>
+      </div>
+      <div class="video-meta">
+        <span class="tag">PowerPoint 自動生成</span>
+        <span class="tag tag--tool">Claude API</span>
+        <span class="label">— Video 10</span>
+      </div>
+      <h3>テーマ入力だけで .pptx を自動生成：AI スライド自動生成システム（業務効率・半自動生成型）</h3>
+      <p class="stack">Claude API (Sonnet)  /  PptxGenJS  /  Vercel Serverless  /  HTML/CSS/JS</p>
+      <p class="caption">▲ PowerPoint 自動生成デモ：テーマ・ターゲット・目的を入力するだけで、90秒以内にプロ品質の .pptx ファイルが自動生成・ダウンロードされるまでを実演しています。</p>
+      <dl class="psr">
+        <div><dt>Problem</dt><dd>プレゼン資料の作成は1件あたり平均3〜5時間、外注すれば3万〜10万円のコストが発生する。Gamma や Canva など既存ツールへの「コピペ作業」も残っており、完全な自動化には至っていなかった。</dd></div>
+        <div><dt>Solution</dt><dd>Claude API がスライド構成・本文テキストを JSON で生成し、PptxGenJS がそのまま .pptx ファイルに変換。Vercel Serverless Functions を API 層に置くことで、外部ツール不要・ブラウザだけで入力から PowerPoint ダウンロードまで完結するシステムを設計・実装。</dd></div>
+        <div><dt>Result</dt><dd>入力から .pptx 生成まで 90秒以内で完結。生成ファイルは PowerPoint / Google スライドで直接編集可能。資料作成コストの大幅削減と、社内テンプレートへのカスタマイズ対応による品質の均一化を実現。</dd></div>
+      </dl>
+      <p class="design-note"><strong>設計思想：</strong>「AI が構成を考え、コードがファイルを作る」というエンドツーエンドの自動化を徹底。Gamma など外部デザインツールへのコピペ工程を完全に排除し、ブラウザ完結・90秒以内というユーザー体験を最優先に設計しました。Claude API の JSON 出力と PptxGenJS のファイル生成を直結させたアーキテクチャが核心で、社内テンプレート・ブランドカラーへのカスタマイズにも対応できる拡張性を持ちます。</p>
+    </article>
+
+    <!-- Video 11 -->
+    <article class="video-item">
+      <div class="video-thumb">
+        <video src="videos/2_5.mp4" controls playsinline preload="metadata" style="width:100%;height:100%;display:block;object-fit:cover;"></video>
+      </div>
+      <div class="video-meta">
+        <span class="tag">Slide Generator</span>
+        <span class="tag tag--tool">Claude API</span>
+        <span class="label">— Video 11</span>
+      </div>
+      <h3>既存テンプレート解析＋AIスライド生成システム（既存資産活用・ブランド再現型）</h3>
+      <p class="stack">Claude API  /  PptxGenJS  /  Vercel Serverless  /  HTML/CSS/JS  /  プロンプトエンジニアリング</p>
+      <p class="caption">▲ 既存資料アップロード→ブランド解析→スライド自動生成デモ：既存の資料をアップロードするだけで色・フォント・構成パターンを AI が学習し、ブランド反映済みの .pptx ファイルを自動生成するまでを実演しています。</p>
+      <dl class="psr">
+        <div><dt>Problem</dt><dd>企業・個人事業主が持つ既存の資料には、長年かけて磨かれたブランドデザインや構成ノウハウが蓄積されている。しかし既存の AI スライドツールでは「ゼロからの生成」が前提で、過去資産を活かせず、ブランドの一貫性が失われがちだった。</dd></div>
+        <div><dt>Solution</dt><dd>既存資料をアップロードすると Claude API がブランド（色・フォント・構成パターン）を自動抽出・学習。原稿ファイルをもとにスライド構成案を AI 生成し、人間が確認・修正したうえで、ブランド反映済みの .pptx を自動出力。最終的なレイアウト微調整のみ人間が担う「既存資産活用型」の半自動フロー（提案 C）を設計・実装。</dd></div>
+        <div><dt>Result</dt><dd>ゼロからデザインを指定する手間が不要になり、ブランドの一貫性を保ったまま高品質な資料を短時間で量産できる体制を実現。既存テンプレートの再利用により、デザイン修正コストを大幅削減。pptx／HTML／PDF 形式でダウンロード可能。</dd></div>
+      </dl>
+      <p class="design-note"><strong>設計思想：</strong>「ゼロから作る AI」ではなく、「これまでの資産を活かす AI」というコンセプトが本提案の核心。ブランド学習→構成生成→人間確認→自動出力という段階的なフローにより、完全自動化ではなく「最終判断は人間」という品質担保の仕組みを維持しています。既存テンプレートを持つ企業が最も恩恵を受けやすい実務直結のシステム設計です。</p>
+    </article>
+
+    <!-- Video 12 -->
+    <article class="video-item">
+      <div class="video-thumb">
+        <video src="videos/sns-generator.mp4" controls playsinline preload="metadata" style="width:100%;height:100%;display:block;object-fit:cover;"></video>
+      </div>
+      <div class="video-meta">
+        <span class="tag">SNS 自動化</span>
+        <span class="tag tag--tool">Claude API</span>
+        <span class="label">— Video 12</span>
+      </div>
+      <h3>テーマ入力だけで投稿文を自動生成：SNS 投稿文ジェネレーター</h3>
+      <p class="stack">Claude API  /  Vercel Serverless  /  HTML/CSS/JS  /  プロンプトエンジニアリング</p>
+      <p class="caption">▲ SNS 投稿文生成デモ：テーマ・ターゲット・トーンを入力するだけで、Threads・Instagram・X（旧Twitter）向けに最適化された投稿文が即時生成されるまでを実演しています。</p>
+      <dl class="psr">
+        <div><dt>Problem</dt><dd>SNS の継続投稿は「何を書くか」「各プラットフォームに合わせて書き直す」という二重の工数が発生しがちで、発信が続かない原因になっていた。ツールによる自動投稿はあっても、「質の高い文章を量産する」工程は依然として人手に依存していた。</dd></div>
+        <div><dt>Solution</dt><dd>Claude API を活用し、テーマ・ターゲット・トーン（ビジネス／カジュアルなど）を入力するだけで、Threads・Instagram・X それぞれの文字数制限・文体・ハッシュタグ慣習に最適化された投稿文を一括生成するブラウザ完結型ツールを設計・実装。Vercel Serverless Functions を API 層に置くことで、環境構築不要・URL だけで即使える体験を実現。</dd></div>
+        <div><dt>Result</dt><dd>「書く」作業が「テーマを決める」作業に変わり、投稿文の量産と継続発信が可能に。プラットフォームごとの書き直し工数をゼロにし、SNS 運用の継続率向上と発信の一貫性を同時に実現。個人事業主・小規模チームの情報発信コストを大幅に削減。</dd></div>
+      </dl>
+      <p class="design-note"><strong>設計思想：</strong>「完璧な一本を書く」のではなく「複数プラットフォーム向けをまとめて量産する」というコンセプトが核心。各 SNS の特性（X の簡潔さ・Instagram のハッシュタグ文化・Threads の会話調）をプロンプトに組み込み、出力品質を均一化しました。発信の「継続」こそが最大の成果につながるという考えから、摩擦ゼロの UX を最優先に設計しています。</p>
+    </article>
+
+    <!-- Video 13 -->
+    <article class="video-item">
+      <div class="video-thumb">
+        <video src="videos/sayaka_sns.mp4" controls playsinline preload="metadata" style="width:100%;height:100%;display:block;object-fit:cover;"></video>
+      </div>
+      <div class="video-meta">
+        <span class="tag">SNS 自動化</span>
+        <span class="tag tag--tool">Claude API</span>
+        <span class="tag tag--tool">Notion</span>
+        <span class="label">— Video 13</span>
+      </div>
+      <h3>AI人格を蓄積して投稿を量産：Sayaka Auto Ver3</h3>
+      <p class="stack">Claude API  /  Notion API  /  Vercel  /  Next.js  /  プロンプトエンジニアリング  /  SNS 自動化</p>
+      <p class="caption">▲ Sayaka Auto Ver3 デモ：テーマ・時間帯・商品情報を入力するだけで、Threads・Instagram 向けの投稿文・ハッシュタグ・リール文・画像生成プロンプトまで一括生成される様子を実演しています。</p>
+      <dl class="psr">
+        <div><dt>Problem</dt><dd>SNS 発信では、「毎回ゼロから考える」こと自体が継続の大きな負担になっていた。さらに、投稿ごとに空気感・口調・世界観がブレやすく、"同じ人格として発信し続ける"ことが難しいという課題があった。特に Threads・Instagram・リール向けテキストでは、媒体ごとの最適化と世界観維持を両立する必要があり、発信者の負担が大きくなっていた。</dd></div>
+        <div><dt>Solution</dt><dd>Claude API を活用し、テーマ・時間帯・商品情報を入力するだけで、Threads 投稿文・Instagram 用本文・ハッシュタグ・リール短文・画像生成プロンプトを一括生成するブラウザ完結型ツールを設計・実装。さらに、Notion に過去投稿・人格設定・トーン・発信ルールを蓄積し、「Sayaka」という AI 人格を継続的に再利用できる構造を構築。単なる文章生成ではなく、"同じ人格が発信しているように見える一貫性"を重視したプロンプト設計を行った。Vercel 上へデプロイすることで、環境構築不要・URL だけで即利用できる運用も実現。</dd></div>
+        <div><dt>Result</dt><dd>「毎回考える」作業を大幅に削減し、テーマ入力だけで複数 SNS 向けコンテンツを継続量産できる状態を実現。投稿頻度の維持だけでなく、人格・世界観・言葉遣いの統一によってブランド一貫性も向上。また、Notion に投稿資産を蓄積することで、過去コンテンツを AI が再利用しながら継続的に"人格成長"できる基盤を構築。過去投稿との重複や表現パターンの偏りも参照しながら生成を行うことで、「同じことばかり言ってしまう」問題を軽減し、長期運用でも発信の鮮度を維持できる構造を実現した。個人発信者でも、少人数運用で長期的な SNS ブランド構築が可能になった。</dd></div>
+      </dl>
+      <p class="design-note"><strong>設計思想：</strong>「完璧な一本を書く」のではなく、「人格と世界観を維持したまま継続量産する」ことをコンセプトに設計。Threads の会話感・Instagram の情緒性・リール向け短文テンポなど、各媒体ごとの特性をプロンプトへ組み込みながらも、"Sayakaらしさ"が崩れない構造を重視した。また、Notion を AI の記憶領域として活用することで、単発生成ではなく「蓄積→再利用→発信改善」が循環する AI 人格運用を実現。発信継続の摩擦を極限まで減らす UX を最優先に設計している。</p>
+    </article>
+
+  </div>
+</section>
+
+<!-- 
+  【AI ワークフロー・知識蓄積セクション】
+  Claude・Notion・GitHub を活用した AI 人格運用・知識蓄積・継続生成の運用画面を紹介します。
+-->
+<section id="ai-workflow" style="background: var(--warm-white);">
+  <p class="section-label">AI Workflow &amp; Knowledge Base</p>
+  <h2 class="section-title">AI運用・知識蓄積</h2>
+  <div class="divider"></div>
+  <p class="section-sub">Claude・Notion・GitHub を活用し、AI人格運用・知識蓄積・継続生成を実際に行っている運用画面です。単なるツール利用ではなく、「蓄積 → 再利用 → 発信改善」が循環する AI ワークフローを設計・運用しています。</p>
+  <div class="arch-grid">
+
+    <article class="arch-item">
+      <div class="arch-img"><img src="images/claude.png" alt="Claude Code Workflow 運用画面" loading="lazy"></div>
+      <div class="video-meta"><span class="tag">AI Workflow</span><span class="tag tag--tool">Claude Code</span><span class="label">— Workflow 01</span></div>
+      <h3>Claude Code Workflow</h3>
+      <p class="stack">Claude Code  /  自然言語指示  /  ポートフォリオ更新  /  投稿生成システム</p>
+      <p class="caption" style="margin: 0 2rem 2rem;">▲ AIへ自然言語で構造変更・記事追加・設計変更を指示し、ポートフォリオや投稿生成システムを更新している実際の運用画面です。</p>
+    </article>
+
+    <article class="arch-item">
+      <div class="arch-img"><img src="images/Notion.png" alt="Notion AI Memory 投稿管理画面" loading="lazy"></div>
+      <div class="video-meta"><span class="tag">Knowledge Base</span><span class="tag tag--tool">Notion</span><span class="label">— Workflow 02</span></div>
+      <h3>Notion AI Memory</h3>
+      <p class="stack">Notion API  /  投稿管理  /  人格設定  /  AI記憶領域</p>
+      <p class="caption" style="margin: 0 2rem 2rem;">▲ 投稿・人格設定・過去コンテンツを蓄積し、AI が再利用可能な記憶領域として運用している Notion データベースの実画面です。</p>
+    </article>
+
+    <article class="arch-item">
+      <div class="arch-img"><img src="images/GitHub.png" alt="GitHub Knowledge Management 画面" loading="lazy"></div>
+      <div class="video-meta"><span class="tag">Version Control</span><span class="tag tag--tool">GitHub</span><span class="label">— Workflow 03</span></div>
+      <h3>GitHub Knowledge Management</h3>
+      <p class="stack">GitHub  /  プロンプト管理  /  AI設計  /  投稿生成システム</p>
+      <p class="caption" style="margin: 0 2rem 2rem;">▲ プロンプト・AI設計・投稿生成システムを継続管理している GitHub リポジトリの実画面です。</p>
+    </article>
+
+    <article class="arch-item">
+      <div class="arch-img"><img src="images/PersonaPromptDesign.png" alt="AI Persona Prompt Design 設計書" loading="lazy"></div>
+      <div class="video-meta"><span class="tag">Prompt Design</span><span class="tag tag--tool">Claude</span><span class="label">— Workflow 04</span></div>
+      <h3>AI Persona Prompt Design</h3>
+      <p class="stack">プロンプトエンジニアリング  /  人格設計  /  投稿ルール定義  /  トーン設計</p>
+      <p class="caption" style="margin: 0 2rem 2rem;">▲ 投稿時間帯・感情トーン・口調・ハッシュタグ・画像ルールまで定義し、「Sayakaらしさ」を維持するための AI 人格プロンプトを設計した実際のドキュメントです。</p>
+    </article>
+
+    <article class="arch-item">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; aspect-ratio: 16/9; overflow: hidden; background: var(--charcoal);">
+        <img src="images/sayaka1.png" alt="AI Generated Output - Threads・Instagram生成画面" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position: top;">
+        <img src="images/sayaka2.png" alt="AI Generated Output - リール・BGM・画像プロンプト生成画面" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position: top;">
+      </div>
+      <div class="video-meta"><span class="tag">AI Output</span><span class="tag tag--tool">Claude API</span><span class="tag tag--tool">Notion</span><span class="label">— Workflow 05</span></div>
+      <h3>AI Generated Output</h3>
+      <p class="stack">Claude API  /  Notion API  /  Threads  /  Instagram  /  リール  /  画像生成プロンプト</p>
+      <p class="caption" style="margin: 0 2rem 2rem;">▲ Threads・Instagram・リール文・BGM・画像生成プロンプトを一括生成し、Notion へ蓄積している実際の出力画面です。</p>
+    </article>
+
+  </div>
+</section>
+
+<!-- 
+  【アーキテクチャセクション】
+  システムの構成図（Miro, Dify, Make等）を紹介し、設計の意図を解説します。
+-->
+<section style="background: var(--warm-white);">
+  <p class="section-label">Architecture</p>
+  <h2 class="section-title">構成図・設計図</h2>
+  <div class="divider"></div>
+  <p class="section-sub">「課題の抽象化 → 解決策の設計」のプロセスを図解で整理しています。</p>
+  <div class="arch-grid">
+
+    <article class="arch-item">
+      <div class="arch-img"><img src="images/miro.png" alt="Miro マルチエージェント設計図" loading="lazy"></div>
+      <div class="video-meta"><span class="tag">Architecture</span><span class="tag tag--tool">Miro</span><span class="label">— Arch 01</span></div>
+      <h3>「複数のAIが連携するチーム」の業務設計図（Miro）</h3>
+      <p class="stack">Miro  /  業務要件定義  /  フロー視覚化</p>
+      <p class="caption">▲ リサーチからファクトチェック、最終回答の作成まで、複数のAIにどう役割分担させるかを図解した設計ドキュメントです。</p>
+      <dl class="psr">
+        <div><dt>Problem</dt><dd>「AIに任せたい業務があるが、どこから手をつけていいか分からない」「複雑な作業すぎて、どう自動化できるかイメージが湧かない」という導入前の不安。</dd></div>
+        <div><dt>Solution</dt><dd>いきなり開発を始めるのではなく、まずはMiro（オンラインホワイトボード）を使って業務フローを可視化。人間と複数AIの役割分担を分かりやすい図に落とし込みます。</dd></div>
+        <div><dt>Result</dt><dd>お客様と「どの作業をAIが担当し、どこを人間がチェックするか」を事前にすり合わせることで、認識のズレがない、実務で本当に使えるシステムを構築できます。</dd></div>
+      </dl>
+      <p class="design-note"><strong>設計思想：</strong>「プログラミングスキル」以前に、「お客様のモヤモヤした課題を整理し、AIで解決できる道筋を描く（構造化する）」ことを最も大切にしています。この図はその設計プロセスの裏側です。</p>
+    </article>
+
+    <article class="arch-item">
+      <div class="arch-img"><img src="images/Dify.png" alt="Dify RAG FAQ AIエージェント構成図" loading="lazy"></div>
+      <div class="video-meta"><span class="tag">FAQ AI Agent</span><span class="tag tag--tool">Dify</span><span class="label">— Arch 02</span></div>
+      <h3>自己解決率を最大化する FAQ AIエージェント</h3>
+      <p class="stack">Dify  /  RAG  /  カスタムプロンプト設計</p>
+      <p class="caption">▲ Dify による RAG 構成図：ナレッジベースと LLM を組み合わせた自己解決型 FAQ の全体アーキテクチャです。</p>
+      <dl class="psr">
+        <div><dt>Problem</dt><dd>定型的な問い合わせ対応によるCS部門の疲弊。同じ質問への繰り返し回答が業務時間を圧迫していた。</dd></div>
+        <div><dt>Solution</dt><dd>過去ログから RAG を構築し、曖昧な質問意図を補完するプロンプト設計を実施。ユーザーが「聞き方を知らなくても」答えを得られる体験を実現。</dd></div>
+        <div><dt>Result</dt><dd>CS 対応件数を大幅削減。ボットで解決できない複雑なケースのみ担当者へエスカレーションする体制を構築。</dd></div>
+      </dl>
+      <p class="design-note"><strong>設計思想：</strong>単純なキーワードマッチではなく、文脈を読んで回答を生成する RAG 設計が核心。プロンプトエンジニアリングで「聞き方が下手でも答えられる」UX を追求しました。</p>
+    </article>
+
+    <article class="arch-item">
+      <div class="arch-img"><img src="images/Make1.png" alt="Make マルチチャネルSNS配信パイプライン フロー図" loading="lazy"></div>
+      <div class="video-meta"><span class="tag">Multi-Channel</span><span class="tag tag--tool">Make</span><span class="label">— Arch 03</span></div>
+      <h3>マルチチャネル・コンテンツ配信パイプライン</h3>
+      <p class="stack">Make  /  LINE  /  Buffer  /  OpenAI  /  画像生成 AI</p>
+      <p class="caption">▲ Make ワークフロー：LINE 入力から SNS 自動投稿・画像生成まで一気通貫で処理するパイプラインの全体像です。</p>
+      <dl class="psr">
+        <div><dt>Problem</dt><dd>各 SNS ごとの投稿工数とトンマナ管理が煩雑。プラットフォームごとに原稿を書き直す二重工数が発生していた。</dd></div>
+        <div><dt>Solution</dt><dd>LINE からテーマ入力 → 最新情報を自動検索 → X 投稿文・画像を AI 生成 → Router で Buffer / LINE 返信に振り分ける抽象化フローを設計。</dd></div>
+        <div><dt>Result</dt><dd>単一の操作で複数チャネルへ最適化されたコンテンツを配信。投稿継続率が向上し、ブランドの一貫性を維持。</dd></div>
+      </dl>
+      <p class="design-note"><strong>設計思想：</strong>「単一コンテンツを各 SNS 向けに最適化する抽象化フロー」が設計の核心。ツールに依存しない構造で、将来のチャネル追加にも柔軟に対応できます。</p>
+    </article>
+
+    <article class="arch-item">
+      <div class="arch-img"><img src="images/Make2.png" alt="Make 音声ファイルから議事録自動生成 フロー図" loading="lazy"></div>
+      <div class="video-meta"><span class="tag">Auto Minutes</span><span class="tag tag--tool">Make</span><span class="label">— Arch 04</span></div>
+      <h3>音声ファイルから自動生成：完全自動化 議事録作成システム</h3>
+      <p class="stack">Make  /  Dropbox  /  AssemblyAI  /  OpenAI  /  Slack</p>
+      <p class="caption">▲ Make ワークフロー：音声ファイルのアップロードをトリガーに、文字起こし→議事録生成→Slack通知まで完全自動で処理するパイプラインの全体像です。</p>
+      <dl class="psr">
+        <div><dt>Problem</dt><dd>会議後の議事録作成が担当者の手作業に依存。文字起こし・要約・共有に時間がかかり、意思決定のスピードを阻害していた。</dd></div>
+        <div><dt>Solution</dt><dd>指定フォルダへの音声ファイル（mp3/m4a）アップロードをトリガーに自動起動。AssemblyAI で高精度な文字起こしを行い、GPT-4 が「決定事項」「ToDo」「次回アジェンダ」などのビジネスフォーマットで要約。生成した議事録をドキュメント保存し、Slack へ完了通知を送信。</dd></div>
+        <div><dt>Result</dt><dd>「会議後の議事録作成」という非生産的な作業時間をゼロに。チームへの共有も即時完了し、意思決定スピードを飛躍的に向上。</dd></div>
+      </dl>
+      <p class="design-note"><strong>設計思想：</strong>「ファイルを置くだけ」という最小の操作で全工程が完結するゼロタッチ設計を追求。AI の出力フォーマットもビジネス実務に即した構造に固定し、すぐに使える議事録品質を担保しました。</p>
+    </article>
+
+  </div>
+</section>
+
+<!-- 
+  【Aboutセクション】
+  制作者（奥田 真佐子）のプロフィールと提供可能なサービス一覧です。
+-->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-photo-frame">
+      <div class="about-photo">
+        <img src="images/profile.jpg" alt="奥田 真佐子" loading="lazy">
+      </div>
+    </div>
+    <div class="about-text">
+      <p class="section-label">About</p>
+      <h2 class="section-title">プロフィール</h2>
+      <div class="divider"></div>
+      <p class="section-sub">個人事業主・小規模チームに向けて、AIを活用した業務効率化の仕組みづくりを支援しています。「難しいことは任せて、本来の仕事に集中してほしい」という想いで活動しています。</p>
+      <ul class="about-list">
+        <li>問い合わせ自動化の構築・運用サポート</li>
+        <li>議事録・社内文書の自動生成システム導入</li>
+        <li>SNS運用の仕組み化・継続サポート</li>
+        <li>業務フロー設計とAIツール導入支援</li>
+        <li>まずはご相談だけでも大丈夫です</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 
+  【コンタクトセクション】
+  お問い合わせ用のメールアドレスを表示するエリアです。
+-->
+<section class="contact" id="contact">
+  <p class="section-label" style="color: var(--accent-light);">Contact</p>
+  <h2 class="section-title">ご相談・ご依頼はこちら</h2>
+  <div class="divider"></div>
+  <p class="section-sub">ご相談だけでも大丈夫です。<br>お気軽にご連絡ください。<br>業務の整理や自動化について、状況に合わせてご提案します。</p>
+  <p class="contact-name">奥田 真佐子</p>
+  <p class="contact-name-en">Okuda Masako</p>
+  <a href="mailto:okudamasako0209@gmail.com" class="contact-email">✉ &nbsp; okudamasako0209@gmail.com</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Masako Okuda — AI × 業務効率化</span>
+  <span>okudamasako0209@gmail.com</span>
+</footer>
+
+<script>
+function setFontSize(size, btn) {
+  var scales = { s: 1, m: 1.2, l: 1.45 };
+  document.documentElement.style.setProperty('--fs', scales[size]);
+  document.querySelectorAll('.font-size-btns button').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  localStorage.setItem('fs', size);
+}
+(function(){
+  var saved = localStorage.getItem('fs') || 's';
+  var btn = document.querySelector('.btn-' + saved);
+  if(btn){ setFontSize(saved, btn); }
+})();
+
+// トップへ戻るボタンの表示・非表示制御
+window.addEventListener('scroll', function() {
+  var btn = document.getElementById('backToTop');
+  if (window.pageYOffset > 500) {
+    btn.classList.add('visible');
+  } else {
+    btn.classList.remove('visible');
+  }
+});
+</script>
+
+<!-- トップへ戻るボタン -->
+<a href="#" class="back-to-top" id="backToTop">↑</a>
+
+<!-- 画像モーダル -->
+<div class="img-modal-overlay" id="imgModal">
+  <button class="img-modal-close" id="imgModalClose">✕</button>
+  <img src="" alt="" id="imgModalImg">
+  <p class="img-modal-hint">クリックまたは ESC で閉じる</p>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var overlay = document.getElementById('imgModal');
+  var modalImg = document.getElementById('imgModalImg');
+  var closeBtn = document.getElementById('imgModalClose');
+
+  document.querySelectorAll('#ai-workflow img').forEach(function(img){
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', function(){
+      modalImg.src = this.src;
+      modalImg.alt = this.alt;
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeModal(){
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeModal();
+  });
+});
+</script>
+</body>
+</html>

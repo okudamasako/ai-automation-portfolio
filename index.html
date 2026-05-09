@@ -845,12 +845,34 @@
     <!-- Video 12 -->
     <article class="video-item">
       <div class="video-thumb">
+        <video src="videos/AISlideGeneration.mp4" controls playsinline preload="metadata" style="width:100%;height:100%;display:block;object-fit:cover;"></video>
+      </div>
+      <div class="video-meta">
+        <span class="tag">AI スライド生成</span>
+        <span class="tag tag--tool">Marp</span>
+        <span class="tag tag--tool">Claude Code</span>
+        <span class="label">— Video 12</span>
+      </div>
+      <h3>自然言語だけでスライドを生成：Marp × Claude Code</h3>
+      <p class="stack">Marp  /  Claude Code  /  Markdown  /  VS Code</p>
+      <p class="caption">▲ AIプレゼン資料自動生成デモ：実装計画書をもとに、Claude Codeへの自然言語指示だけでMarp用Markdownを生成。VS Code上でスライド化し、PDF出力までを実演しています。</p>
+      <dl class="psr">
+        <div><dt>Problem</dt><dd>プレゼン資料作成には、PowerPoint操作・レイアウト調整・構成整理など多くの工数が必要だった。 「内容はあるが、資料化に時間がかかる」という課題が、業務効率化の大きな障壁になっていた。</dd></div>
+        <div><dt>Solution</dt><dd>Claude Code に実装計画書を入力し、Marp用Markdownへ自動変換。 Marpを用いてスライド化・PDF出力までを半自動化。「文章を書く」→「資料になる」までのフローを、AIを活用して再設計。</dd></div>
+        <div><dt>Result</dt><dd>PowerPointを一から手作業で作成する工程を大幅削減。 議事録・箇条書き・構成メモから、実用レベルのスライド叩き台を短時間で生成可能に。資料作成そのものではなく、「資料生成フロー」を構築するアプローチを検証。</dd></div>
+      </dl>
+      <p class="design-note"><strong>技術的背景：</strong>MarpはMarkdownからスライドを生成するプレゼンテーションエンジン。 Claude Code による構造整理・Markdown生成と組み合わせることで、「AI → 構造化 → スライド生成 → PDF化」という一連のワークフローを構築可能。特に、議事録・社内共有資料・テンプレート資料など、繰り返し発生する資料業務との相性が高い。</p>
+    </article>
+
+    <!-- Video 13 (旧 Video 12) -->
+    <article class="video-item">
+      <div class="video-thumb">
         <video src="videos/sns-generator.mp4" controls playsinline preload="metadata" style="width:100%;height:100%;display:block;object-fit:cover;"></video>
       </div>
       <div class="video-meta">
         <span class="tag">SNS 自動化</span>
         <span class="tag tag--tool">Claude API</span>
-        <span class="label">— Video 12</span>
+        <span class="label">— Video 13</span>
       </div>
       <h3>テーマ入力だけで投稿文を自動生成：SNS 投稿文ジェネレーター</h3>
       <p class="stack">Claude API  /  Vercel Serverless  /  HTML/CSS/JS  /  プロンプトエンジニアリング</p>
@@ -863,7 +885,7 @@
       <p class="design-note"><strong>設計思想：</strong>「完璧な一本を書く」のではなく「複数プラットフォーム向けをまとめて量産する」というコンセプトが核心。各 SNS の特性（X の簡潔さ・Instagram のハッシュタグ文化・Threads の会話調）をプロンプトに組み込み、出力品質を均一化しました。発信の「継続」こそが最大の成果につながるという考えから、摩擦ゼロの UX を最優先に設計しています。</p>
     </article>
 
-    <!-- Video 13 -->
+    <!-- Video 14 (旧 Video 13) -->
     <article class="video-item">
       <div class="video-thumb">
         <video src="videos/sayaka_sns.mp4" controls playsinline preload="metadata" style="width:100%;height:100%;display:block;object-fit:cover;"></video>
@@ -872,7 +894,7 @@
         <span class="tag">SNS 自動化</span>
         <span class="tag tag--tool">Claude API</span>
         <span class="tag tag--tool">Notion</span>
-        <span class="label">— Video 13</span>
+        <span class="label">— Video 14</span>
       </div>
       <h3>AI人格を蓄積して投稿を量産：Sayaka Auto Ver3</h3>
       <p class="stack">Claude API  /  Notion API  /  Vercel  /  Next.js  /  プロンプトエンジニアリング  /  SNS 自動化</p>

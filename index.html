@@ -257,20 +257,38 @@
       grid-template-columns: 1fr;
       border: none;
     }
+    /* 【挙動説明：スマホ表示でのHTMLラッパー不足によるレイアウト崩れ（説明文が左端に押し込められる問題）を、絶対配置を用いて完全に解決する】 */
     .process-step {
       border-right: none;
       border-bottom: 1px solid var(--line);
-      padding: 1.4rem 0;
-      display: grid;
-      grid-template-columns: 44px 1fr;
-      column-gap: 1rem;
-      align-items: start;
+      padding: 1.4rem 0 1.4rem 48px; /* 左側に番号用のスペースを確保 */
+      position: relative; /* 子要素の絶対配置の基準点とする */
     }
     .process-step:last-child { border-bottom: none; }
     .process-num {
-      font-size: 1.4rem; margin-bottom: 0;
+      position: absolute;
+      top: 1.4rem;
+      left: 0;
+      font-size: 1.4rem; 
+      margin-bottom: 0;
+      line-height: 1;
     }
-    .process-title { margin-bottom: 0.3rem; }
+    .process-title { 
+      margin-bottom: 0.3rem; 
+      line-height: 1.4;
+    }
+    .process-desc {
+      line-height: 1.85;
+    }
+
+    /* 【挙動説明：画面幅が極端に狭いスマホでは、ビデオ詳細の Problem / Solution / Result のラベルと本文を縦並びにして快適に読めるようにする】 */
+    .psr > div { 
+      grid-template-columns: 1fr !important; /* 縦並びを強制 */
+      gap: 0.2rem; 
+    }
+    .psr dt {
+      padding-top: 0;
+    }
   }
   .services-grid {
     display: grid; grid-template-columns: repeat(2, 1fr);
@@ -744,25 +762,89 @@
     .video-grid { grid-template-columns: 1fr; }
     .arch-grid  { grid-template-columns: 1fr; }
   }
-  /* スマホ・小画面 */
+  /* スマホ・小画面（タブレット・スマホ表示の最適化） */
   @media (max-width: 900px) {
     nav { padding: 1rem 1rem; }
     .nav-links { display: none; }
     .font-size-btns { margin-left: 0; }
+    
+    /* 【挙動説明：ナビゲーションのロゴが狭いスマホ画面で右側ボタンと衝突しないように縮小】 */
+    .nav-logo { font-size: 0.95rem; }
+
     .hero { grid-template-columns: 1fr; min-height: auto; }
     .hero-left { padding: 5rem 1.2rem 2rem; }
     .hero-right { min-height: 40vh; }
+    
+    /* 【挙動説明：ヒーローの浮遊カードが画面幅からはみ出して横スクロールが発生するのを防ぐ】 */
+    .hero-visual { padding: 1.5rem 1rem; position: relative; } /* 外枠の余白を縮小 */
+    .hero-card-float { padding: 1.5rem; max-width: 90%; margin: 0 auto; } /* カードの幅を安全に保つ */
+    .hero-card-float::before { top: -6px; left: -6px; right: 6px; bottom: 6px; } /* 装飾線のはみ出しも抑制 */
+
     section { padding: 3rem 1.2rem; }
     .ba-grid { grid-template-columns: 1fr; }
-    .ba-arrow { transform: rotate(90deg); }
+    
+    /* 【挙動説明：Before/Afterが縦並びになった際、矢印が上下のカードとくっつかないようにマージンを設ける】 */
+    .ba-arrow { 
+      transform: rotate(90deg); 
+      margin: 1.5rem 0; /* 上下のカードとの適切な距離感 */
+      padding: 0.5rem 0;
+    }
+
     .services-grid { grid-template-columns: 1fr; }
     .video-grid { grid-template-columns: 1fr; }
     .works-philosophy { padding: 1.5rem; margin: 1.5rem 0 2rem; }
     .consult-topics { gap: 8px; margin: 1.5rem 0 2rem; }
     .consult-tag { font-size: 0.72rem; padding: 5px 12px; }
     .arch-grid  { grid-template-columns: 1fr; }
+    
+    /* 【挙動説明：中画面・スマホ画面でプロセス（ご相談の流れ）が窮屈になったり、境界線が崩れるのを防ぐため、スマホと同様の縦一列レイアウトに移行】 */
+    .process-grid {
+      grid-template-columns: 1fr;
+      border: none;
+      margin-top: 2rem;
+    }
+    .process-step {
+      border-right: none;
+      border-bottom: 1px solid var(--line);
+      padding: 1.4rem 0 1.4rem 48px; /* 左側に番号用の余白を作る */
+      position: relative; /* 子要素の絶対配置の起点 */
+    }
+    .process-step:last-child { border-bottom: none; }
+    .process-num {
+      position: absolute;
+      top: 1.4rem;
+      left: 0;
+      font-size: 1.4rem; 
+      margin-bottom: 0;
+      line-height: 1;
+    }
+    .process-title { 
+      margin-bottom: 0.3rem; 
+      line-height: 1.4;
+    }
+    .process-desc {
+      line-height: 1.85;
+    }
+
     .about-inner { grid-template-columns: 1fr; gap: 2rem; }
+    
+    /* 【挙動説明：スマホ縦並びの際、プロフィール写真の装飾フレームが右端からはみ出して横スクロールを引き起こさないようにする】 */
+    .about-photo-frame {
+      margin-right: 12px; /* 装飾フレームがはみ出る分のマージンをあらかじめ確保 */
+    }
+    .about-photo-frame::after {
+      right: -10px;
+      bottom: -10px;
+    }
+
+    /* 【挙動説明：中画面・スマホ画面で価値観カード（大切にしていること）を1列にして、文字を読みやすく折り返す】 */
+    .about-values { grid-template-columns: 1fr; }
+    .about-value-item { border-right: none; border-bottom: 1px solid var(--line); }
+    .about-value-item:last-child { border-bottom: none; }
+
     footer { padding: 1.5rem 1.2rem; flex-direction: column; gap: 0.5rem; }
+    
+    /* 【挙動説明：中画面（タブレット）での Problem/Solution/Result ラベル幅の微調整 】 */
     .psr > div { grid-template-columns: 70px 1fr; }
     .hero-card-float { padding: 1.5rem; }
   }
@@ -779,7 +861,8 @@
 
   /* ① Featured Works：ツール接続フローの1行表示 */
   .featured-flow-trace {
-    display: flex; align-items: center; flex-wrap: wrap; gap: 0;
+    display: flex; align-items: center; flex-wrap: wrap; 
+    gap: 6px 4px; /* 【挙動説明：スマホなどの狭い画面で折り返された際、文字や矢印が上下に重ならないようにするギャップ設定】 */
     margin-top: 1.4rem; padding-top: 1.2rem;
     border-top: 1px solid var(--line);
   }
@@ -829,7 +912,31 @@
   }
   .ops-flow-svg { width: 100%; height: auto; display: block; }
   @media (max-width: 900px) {
-    .ops-flow-diagram { padding: 1.4rem; }
+    /* 【挙動説明：画面が狭いスマホやタブレットで、運用フロー概念図（SVG）の文字が縮小されて潰れるのを防ぐため、横スクロール可能にする】 */
+    .ops-flow-diagram { 
+      padding: 1.4rem 1rem; 
+      overflow-x: auto; /* 横スクロールを許可 */
+      -webkit-overflow-scrolling: touch; /* iOSでの慣性スクロールを有効化 */
+    }
+    .ops-flow-svg { 
+      min-width: 580px; /* SVGが縮小しすぎないように最小幅を確保 */
+      width: 100%;
+      height: auto; 
+      display: block; 
+    }
+    
+    /* スクロールバーのデザインも全体の美しさに調和させる（極細で上品なデザイン） */
+    .ops-flow-diagram::-webkit-scrollbar {
+      height: 4px;
+    }
+    .ops-flow-diagram::-webkit-scrollbar-track {
+      background: var(--warm-white);
+    }
+    .ops-flow-diagram::-webkit-scrollbar-thumb {
+      background: var(--accent-pale);
+      border-radius: 2px;
+    }
+
     .featured-flow-trace { margin-top: 1rem; padding-top: 1rem; }
   }
 

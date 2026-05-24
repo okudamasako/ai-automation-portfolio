@@ -43,7 +43,7 @@ Claude / Notion / Make / n8n / Dify などを活用し、
 
 ## Portfolio Site
 
-https://portforio5-○○.vercel.app/
+[URLはこちら](https://ai-automation-portfolio-one.vercel.app/)
 
 ## Contact
 
